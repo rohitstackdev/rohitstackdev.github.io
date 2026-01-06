@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Harijan - Senior PHP Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+            background: #f8f9fa;
+        }
+
+        section {
+            padding: 70px 0;
+            background: white;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stats-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .stat-item {
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .skill-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -47px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #3498db;
+        }
+
+        .timeline-item h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .company {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .project-card .tech {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li a {
+                padding: 15px 20px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -30px;
+            }
+
+            .contact-links {
+                gap: 15px;
+            }
+
+            section {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Rohit Harijan</h1>
+            <div class="subtitle">Senior PHP Developer | Full Stack Web Development</div>
+            <div class="contact-links">
+                <a href="mailto:hrohit477@gmail.com">📧 Email</a>
+                <a href="tel:+918652025878">📱 Phone</a>
+                <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com" target="_blank">💻 GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm a results-oriented full-stack web developer with over 4 years of experience developing scalable ERP/CRM solutions and high-performance web applications. My expertise lies in PHP, Laravel, and CodeIgniter, with a proven track record of strategically integrating APIs to reduce operating costs by 20% and boost user engagement by 15%.</p>
+                    <br>
+                    <p>I'm passionate about creating efficient, maintainable code and mentoring development teams using Agile best practices. My approach combines technical excellence with strong communication skills to deliver solutions that truly meet business needs.</p>
+                </div>
+                <div class="stats-box">
+                    <h3>Achievements</h3>
+                    <div class="stat-item">
+                        <strong>98%</strong>
+                        Client Satisfaction
+                    </div>
+                    <div class="stat-item">
+                        <strong>15%</strong>
+                        Faster Delivery
+                    </div>
+                    <div class="stat-item">
+                        <strong>500+</strong>
+                        Daily Active Users
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Backend Development</h3>
+                    <p>PHP, Laravel, CodeIgniter, REST APIs, MySQL, MVC Architecture</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Frontend Development</h3>
+                    <p>JavaScript, jQuery, HTML5, CSS3, AJAX, Responsive Design</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Platforms</h3>
+                    <p>WordPress, Git, GitHub, VS Code, Agile/Scrum</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <p>Team Leadership, Problem Solving, Communication, Time Management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Full Stack Developer</h3>
+                    <div class="company">Technofra</div>
+                    <div class="date">May 2025 - Present | Mumbai, India</div>
+                    <p>Designing comprehensive e-commerce platform (aeritx.com) with integrated CMS and native mobile apps for iOS and Android. Implementing secure payment gateways, user authentication, and centralized ERP system for streamlined operations and business analytics.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Web Developer</h3>
+                    <div class="company">Hands In Technology</div>
+                    <div class="date">January 2023 – May 2025 | Mumbai, India</div>
+                    <p>Awarded "Tech Wizard" for outstanding technical contributions. Developed 15+ RESTful APIs increasing user engagement by 15%. Reduced page load times by 30% through database optimization. Mentored 3 junior developers, improving code quality by 25%.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Web Developer</h3>
+                    <div class="company">Drishyasolution</div>
+                    <div class="date">October 2021 – December 2022 | Mumbai, India</div>
+                    <p>Launched client-facing websites achieving 40% improvement in SEO rankings. Developed 8+ custom ERP/CRM applications supporting 500+ daily active users. Optimized database schemas reducing server response time by 35%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Custom ERP for Tenancy & Billing</h3>
+                    <div class="tech">PHP • CodeIgniter • MySQL</div>
+                    <p>Comprehensive ERP suite with workforce modules, contract management, and billing automation. Handles 1,000+ monthly transactions for property management clients.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Tailor Billing System</h3>
+                    <div class="tech">PHP • CodeIgniter • MySQL</div>
+                    <p>Industry-specific billing software with customer database and order management. Achieved 40% faster order processing for tailoring businesses.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Inventory & Store Management</h3>
+                    <div class="tech">PHP • CodeIgniter • MySQL</div>
+                    <p>End-to-end inventory control system with automated invoice generation and real-time reporting. Manages 5,000+ SKUs with zero discrepancies.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Mobile App API Suite</h3>
+                    <div class="tech">PHP • Laravel • REST APIs</div>
+                    <p>Secure RESTful API backend serving 10,000+ active users. Facilitates order tracking, real-time data synchronization, and user authentication.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>CMS-Driven Websites</h3>
+                    <div class="tech">PHP • WordPress • JavaScript • CSS3</div>
+                    <p>Responsive websites with custom CMS for non-technical content management. Achieved 95+ Google PageSpeed scores.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>E-commerce Platform</h3>
+                    <div class="tech">PHP • Laravel • MySQL</div>
+                    <p>Full-featured e-commerce solution with integrated mobile apps for iOS and Android, featuring secure payments and real-time synchronization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rohit Harijan. All rights reserved.</p>
+            <p>Open to full-time opportunities and contract work</p>
+        </div>
+    </footer>
+</body>
+</html>
